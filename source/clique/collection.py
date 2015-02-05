@@ -10,6 +10,7 @@ import clique.sorted_set
 
 
 class Collection(object):
+
     '''Represent group of items that differ only by numerical component.'''
 
     indexes = clique.descriptor.Unsettable('indexes')
@@ -167,6 +168,16 @@ class Collection(object):
 
         return result
 
+    def __len__(self):
+        return len(self.indexes)
+
+    def __getitem__(self, index):
+        '''Return a file at the index in a collection.'''
+        _index = self.indexes[index]
+        formatted_index = '{0:0{1}d}'.format(_index, self.padding)
+        item = '{0}{1}{2}'.format(self.head, formatted_index, self.tail)
+        return item
+
     def match(self, item):
         '''Return whether *item* matches this collection expression.
 
@@ -291,6 +302,12 @@ class Collection(object):
             previous = index
 
         return True
+
+    def start(self):
+        return self.indexes[0]
+
+    def end(self):
+        return self.indexes[-1]
 
     def holes(self):
         '''Return holes in collection.

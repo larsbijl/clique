@@ -7,6 +7,7 @@ import bisect
 
 
 class SortedSet(collections.MutableSet):
+
     '''Maintain sorted collection of unique items.'''
 
     def __init__(self, iterable=None):
@@ -35,6 +36,9 @@ class SortedSet(collections.MutableSet):
     def __iter__(self):
         '''Return iterator over items.'''
         return iter(self._members)
+
+    def __getitem__(self, index):
+        return self._members[index]
 
     def add(self, item):
         '''Add *item*.'''

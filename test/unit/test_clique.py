@@ -25,7 +25,7 @@ def test_assemble():
         'head1_010_v2.0001.tail', 'head1_010_v2.0002.tail',
         'head1_020_v1.0001.tail', 'head1_020_v1.0002.tail'
     ]
-    
+
     collections, remainder = clique.assemble(items)
 
     expected = [
@@ -151,7 +151,6 @@ def test_assemble_boundary_padding(items, expected):
 ], ids=[
     'padded',
     'unpadded',
-    'custom range pattern',
     'custom holes pattern'
 ])
 def test_parse(value, pattern, expected):
